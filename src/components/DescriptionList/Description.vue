@@ -1,58 +1,35 @@
 <template>
-    <div class="description-list" :class="size">
-      <div class="title">
-        <slot name="title">{{title}}</slot>
-      </div>
-      <a-row :gutter="gutter" ref="items">
-        <slot></slot>
-      </a-row>
+  <a-col ref="item">
+    <div class="term">
+      <slot name="term">{{term}}</slot>
     </div>
+    <div class="detail">
+      <slot name="detail">{{detail}}</slot>
+    </div>
+  </a-col>
 </template>
 
 <script>
+// import responsive from './responsive';
 export default {
   name: 'DescriptionList',
   props: {
-    layout: {
-      type: String,
-      default: 'horizontal',
-    },
-    col: {
-      type: Number,
-      default: 3,
-      validator: function(value) {
-        if (!(value > 0 && value <= 4)) {
-          console.warn(`[Vue-Antd-Pro warn]: The props 'col' of component 'DescriptionList' should be greater than 0, less than 5`);
-        }
-        return (value > 0 && value <= 4);
-      },
-    },
-    gutter: {
-      type: Number,
-      default: 32,
-    },
-    title: {
-      type: String,
+    term: {
       default: '',
     },
-    size: {
-      type: String,
+    detail: {
       default: '',
     },
   },
   data() {
     return {
+      responsive: {
+        1: { xs: 24 },
+        2: { xs: 24, sm: 12 },
+        3: { xs: 24, sm: 12, md: 8 },
+        4: { xs: 24, sm: 12, md: 6 },
+      },
     };
-  },
-  methods: {
-    _setItemGrid() {
-      let children = this.$refs.items.$children;
-      children.map(child => {
-      });
-    },
-  },
-  mounted() {
-    this._setItemGrid();
   },
 };
 </script>

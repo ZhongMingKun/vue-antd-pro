@@ -10,6 +10,9 @@ import {
 import {
   ResultError, ResultSuccess,
 } from './Result';
+import {
+  BasicProfile, AdvancedProfile,
+} from './Profile';
 
 const routerConfig = [{
   path: '/',
@@ -56,6 +59,18 @@ const routerConfig = [{
     name: 'Fail',
     layout: DefaultLayout,
     component: ResultError,
+  },
+  {
+    path: '/profile/basic',
+    name: 'BasicProfile',
+    layout: DefaultLayout,
+    component: BasicProfile,
+  },
+  {
+    path: '/profile/advanced',
+    name: 'AdvancedProfile',
+    layout: DefaultLayout,
+    component: AdvancedProfile,
   },
   ],
 },

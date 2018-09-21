@@ -79,12 +79,12 @@ const asideMenuConfig = [
     icon: 'profile',
     children: [
       {
-        path: '/success',
+        path: '/basic',
         name: '基础详情页',
       },
       {
-        path: '/fail',
-        name: '失败',
+        path: '/advanced',
+        name: '高级详情页',
       },
     ],
   },
