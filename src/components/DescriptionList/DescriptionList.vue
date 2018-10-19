@@ -1,5 +1,5 @@
 <template>
-    <div class="description-list" :class="size">
+    <div class="description-list" :class="[size, layout]">
       <div class="title">
         <slot name="title">{{title}}</slot>
       </div>
@@ -45,18 +45,23 @@ export default {
     };
   },
   methods: {
-    _setItemGrid() {
+    _setItemGrid(val) {
       let children = this.$refs.items.$children;
       children.map(child => {
+        child._setColumn(val);
       });
     },
   },
-  mounted() {
-    this._setItemGrid();
+  watch: {
+    col(val) {
+      if (val > 0 && val <= 4) {
+        this._setItemGrid(val);
+      }
+    },
   },
 };
 </script>
-<style lang="less" scoped>
+<style lang="less">
 @import '~ant-design-vue/lib/style/themes/default.less';
 
 .description-list {
@@ -66,38 +71,6 @@ export default {
       margin-bottom: -16px;
       overflow: hidden;
     }
-  }
-
-  .title {
-    font-size: 14px;
-    color: @heading-color;
-    font-weight: 500;
-    margin-bottom: 16px;
-  }
-
-  .term {
-    // Line-height is 22px IE dom height will calculate error
-    line-height: 20px;
-    padding-bottom: 16px;
-    margin-right: 8px;
-    color: @heading-color;
-    white-space: nowrap;
-    display: table-cell;
-
-    &:after {
-      content: ':';
-      margin: 0 8px 0 2px;
-      position: relative;
-      top: -0.5px;
-    }
-  }
-
-  .detail {
-    line-height: 22px;
-    width: 100%;
-    padding-bottom: 16px;
-    color: @text-color;
-    display: table-cell;
   }
 
   &.small {

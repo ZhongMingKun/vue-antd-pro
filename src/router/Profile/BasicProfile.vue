@@ -1,17 +1,19 @@
 <template>
   <a-card>
-    <DescriptionList :col="3">
+    <DescriptionList :col="5" :layout="'vertical'">
       <Description :term="1">
         <template slot="detail">
           dudulu*1
         </template>
       </Description>
       <Description :term="2">
-        <template slot="detail">
           dudulu*2
-        </template>
       </Description>
       <Description :term="3" :detail="'dudulu*3'">
+        dudulu*3
+      </Description>
+      <Description :term="4">
+        dudulu*3
       </Description>
     </DescriptionList>
   </a-card>
